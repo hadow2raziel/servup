@@ -26,7 +26,7 @@ LinkCreator()
 	subdomain=$(tr -dc a-z </dev/urandom | head -c 10; echo);
 	echo -n "Enter DOLPHIN profile name: "
 	read profilename
-	domain='gruposedimenta.com'
+	domain='roytechnical.com'
 	echo -e "Website: \e[1;33m$subdomain.$domain\e[0m generating with offer \e[1;33m'$offer'\e[0m."
 	certbot certonly --apache -n -d $subdomain.$domain 
 	echo "<IfModule mod_ssl.c>
@@ -53,10 +53,10 @@ LinkCreator()
 
 	ServerName $subdomain.$domain
 	RewriteEngine on
-	RewriteCond %{SERVER_NAME} =universitysimulator.com
+	RewriteCond %{SERVER_NAME} =$domain
 	RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
 </VirtualHost>" | tee -a /etc/apache2/sites-available/000-default.conf
-	cp -r /home/offers/server-main/$offer /var/www/$subdomain
+	cp -r /home/offers/serverup-main/$offer /var/www/$subdomain
 	certbot certonly --force-renew --apache -n -d $subdomain.$domain
 	echo "# Link for cloaking: $subdomain.$domain" | tee -a /var/www/$subdomain/index.php
 	nano /var/www/$subdomain/index.php

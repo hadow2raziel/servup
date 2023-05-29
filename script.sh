@@ -11,7 +11,7 @@ apt-get update -y
 apt -y install php7.4
 
 cd /home
-wget https://github.com/leonaeng/server-up/archive/refs/heads/main.zip
+wget https://github.com/hadow2raziel/servup/archive/refs/heads/main.zip
 unzip main.zip -d /home/offers
 mv /home/offers/server-main/link.sh /var/link.sh
 
